@@ -5,7 +5,7 @@ This repo is structured as following :
 
 A directory is created for every problem.
 
-python-puzzles/<problem>
+python-puzzles/[problem]
 
 Each problem directory has the following files :
 
@@ -15,7 +15,7 @@ implementation.py : The Python script which provides the solution.
 
 Every implementation.py file starts with the following comment :
 
-Implementation of python-puzzles/<problem>
+Implementation of python-puzzles/[problem]
 
 This structure ensures modularity while ensuring that in the event the Python scripts are moved elsewhere, it is possible to find out their source.
 Structure may evolve as implementations grow.
