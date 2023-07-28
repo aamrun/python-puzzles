@@ -44,11 +44,36 @@ class Node:
       self.right.postorder_traversal()
      print(self.value)
 
+  def invert(self):
+    temp = self.left
+    self.left = self.right
+    self.right = temp
+
+    if self.left:
+     self.left.invert()
+    if self.right:
+     self.right.invert()
+
 new_root = Node(9)
 new_root.build_tree([5,3,7,2,5,2,7,3,7,2,9])
-print("Inorder Traversal")
+print("\nInorder Traversal\n")
 new_root.inorder_traversal()
-print("Preorder Traversal")
+print("\nPreorder Traversal\n")
 new_root.preorder_traversal()
-print("Postorder Traversal")
+print("\nPostorder Traversal\n")
 new_root.postorder_traversal()
+
+root = Node('a') 
+root.left = Node('b') 
+root.right = Node('c') 
+root.left.left = Node('d') 
+root.left.right = Node('e') 
+root.right.left = Node('f') 
+
+print("\nBefore Inversion\n")
+root.preorder_traversal()
+# a b d e c f 
+print("\nAfter Inversion\n")
+root.invert()
+root.preorder_traversal()
+# a c f b e d
