@@ -3,7 +3,6 @@
 #This is another one liner solution utilising Python's list comprehension feature, similar to the implementation of python-puzzles/longest_substring_without_repeating_characters
 #The inner list comprehension generates the set of all non-empty palindromic substrings of the given string.
 #This list is then used in a dictionary comprehension to form key value pairs of the substrings and their lengths.
-#The outer list generator works on this set and generates a list of lengths for each element of the set which has only unique characters.
 #The max() function ultimately gives the desired result.
 
 class Solution: 
