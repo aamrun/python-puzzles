@@ -1,3 +1,5 @@
+#Implementation of python-puzzles/largest_product_of_3_elements
+
 import itertools
 
 def maximum_product_of_three(lst):
