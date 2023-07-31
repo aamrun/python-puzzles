@@ -6,5 +6,6 @@ Inorder traversal
 Preorder traversal
 Postorder traversal
 Invert the tree
+Ceiling and Floor of a tree ( Work in Progress )
 
 This class will be expanded and branched off into other implementations such as AVL trees, Red-Black trees, Ternary trees etc.

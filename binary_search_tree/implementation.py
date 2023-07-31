@@ -54,6 +54,17 @@ class Node:
     if self.right:
      self.right.invert()
 
+  def findCeilingFloor(self, value, floor=None, ceil=None):
+    if self:
+     if floor and (self.value==floor or self.value == value):
+      return self.value
+     if ceil and (self.value==ceil or self.value == value):
+      return self.value
+     if self.left:
+      return self.left.findCeilingFloor(value,floor,None) , self.left.findCeilingFloor(value,None,ceil)
+     if self.right:
+      return self.right.findCeilingFloor(value,floor,None) , self.right.findCeilingFloor(value,None,ceil)
+
 new_root = Node(9)
 new_root.build_tree([5,3,7,2,5,2,7,3,7,2,9])
 print("\nInorder Traversal\n")
@@ -77,3 +88,17 @@ print("\nAfter Inversion\n")
 root.invert()
 root.preorder_traversal()
 # a c f b e d
+
+print("\nWork in Progress : Ceiling and Floor of a binary tree.\n")
+
+root = Node(8) 
+root.left = Node(4) 
+root.right = Node(12) 
+  
+root.left.left = Node(2) 
+root.left.right = Node(6) 
+  
+root.right.left = Node(10) 
+root.right.right = Node(14) 
+
+print(root.findCeilingFloor(5 , 4 , 6))
