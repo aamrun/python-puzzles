@@ -1,9 +1,9 @@
 #Implementation of python-puzzles/longest_substring_without_repeating_characters
 
-#This is essentially a one liner solution utilising Python's list generator feature. 
-#The inner list generator generates the set of all consecutive substrings of the given string. 
+#This is essentially a one liner solution utilising Python's list comprehension feature. 
+#The inner list comprehension generates the set of all consecutive substrings of the given string. 
 #This list is converted into a set to eliminate duplicates. 
-#The outer list generator works on this set and generates a list of lengths for each element of the set which has only unique characters. 
+#The outer list comprehension works on this set and generates a list of lengths for each element of the set which has only unique characters. 
 #The max() function ultimately gives the desired result.
 
 class Solution:
