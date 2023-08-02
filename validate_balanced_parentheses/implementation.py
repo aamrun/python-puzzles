@@ -2,20 +2,20 @@
 
 class Solution:
   def isValid(self, s):
-    opener_list,openers,enders = [],"[{(",")}]"
+    opener_list,brackets = [],{')':'(','}':'{',']':'['}
     
     if s == "" or s is None:
      return True
 
     for s_char in s:
-      if s_char in enders and opener_list == []:
+      if s_char in brackets and opener_list == []:
        return False
-      elif s_char in openers:
+      elif s_char in brackets.values():
        opener_list.append(s_char)
-      elif s_char in enders:
-       if (s_char == ")" and opener_list[-1] != "(") or (s_char == "}" and opener_list[-1] != "{") or (s_char == "]" and opener_list[-1] != "["):
+      elif s_char in brackets:
+       if brackets[s_char] != opener_list[-1]:
         return False
-       elif (s_char == ")" and opener_list[-1] == "(") or (s_char == "}" and opener_list[-1] == "{") or (s_char == "]" and opener_list[-1] == "["):
+       else:
         opener_list.pop()
 
     if opener_list != []:
