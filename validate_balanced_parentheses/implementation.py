@@ -7,17 +7,15 @@ class Solution:
     if s == "" or s is None:
      return True
 
-    strlen = len(s)
-
-    for i in range(0,strlen):
-      if s[i] in enders and opener_list == []:
+    for s_char in s:
+      if s_char in enders and opener_list == []:
        return False
-      elif s[i] in openers:
-       opener_list.append(s[i])
-      elif s[i] in enders:
-       if (s[i] == ")" and opener_list[-1] != "(") or (s[i] == "}" and opener_list[-1] != "{") or (s[i] == "]" and opener_list[-1] != "["):
+      elif s_char in openers:
+       opener_list.append(s_char)
+      elif s_char in enders:
+       if (s_char == ")" and opener_list[-1] != "(") or (s_char == "}" and opener_list[-1] != "{") or (s_char == "]" and opener_list[-1] != "["):
         return False
-       elif (s[i] == ")" and opener_list[-1] == "(") or (s[i] == "}" and opener_list[-1] == "{") or (s[i] == "]" and opener_list[-1] == "["):
+       elif (s_char == ")" and opener_list[-1] == "(") or (s_char == "}" and opener_list[-1] == "{") or (s_char == "]" and opener_list[-1] == "["):
         opener_list.pop()
 
     if opener_list != []:
