@@ -6,7 +6,7 @@ Inorder traversal
 Preorder traversal
 Postorder traversal
 Invert the tree
-Ceiling and Floor of a tree ( Work in Progress )
+Floor and Ceiling of a tree
 Tree depth
 Deepest node ( Work in Progress )
 

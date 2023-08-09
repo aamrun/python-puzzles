@@ -54,13 +54,22 @@ class Node:
     if self.right:
      self.right.invert()
 
-  def findCeilingFloor(self, value, floor=None, ceil=None):
-    if self:
-     if floor and (self.value==floor or self.value == value):
-      return self.value
-     if ceil and (self.value==ceil or self.value == value):
-      return self.value
-     return self.left.findCeilingFloor(value, floor, ceil) if self.left else None, self.right.findCeilingFloor(value, floor, ceil) if self.right else None
+  def findFloorCeiling(self, value, floor=None, ceil=None):
+    tree_stack,found_floor,found_ceil = [self],None,None
+
+    while len(tree_stack)!=0:
+     node = tree_stack.pop()
+     if node.value == floor or node.value == value - 1:
+      found_floor = node.value
+     elif node.value == ceil or node.value == value + 1:
+      found_ceil = node.value
+     
+     if node.left:
+      tree_stack.append(node.left)
+     if node.right:
+      tree_stack.append(node.right)
+
+    return found_floor,found_ceil
 
   def tree_depth(self):
     if self:
@@ -100,7 +109,7 @@ root.preorder_traversal()
 
 print(f"\nTree depth : {root.tree_depth()}")
 
-print("\nWork in Progress : Ceiling and Floor of a binary tree.\n")
+print("\nFloor and Ceiling of a binary tree.\n")
 
 root = Node(8) 
 root.left = Node(4) 
@@ -112,7 +121,7 @@ root.left.right = Node(6)
 root.right.left = Node(10) 
 root.right.right = Node(14) 
 
-print(root.findCeilingFloor(5 , 4 , 6))
+print(root.findFloorCeiling(5 , 4 , 6))
 
 print(f"\nTree depth : {root.tree_depth()}")
 
