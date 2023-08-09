@@ -67,6 +67,11 @@ class Node:
      return max(1 + self.left.tree_depth() if self.left else 0, 1 + self.right.tree_depth() if self.right else 0)
     return 0
 
+  def deepest(self):
+    if self:
+     return self.value, max(1 + self.left.deepest()[1] if self.left else 0, 1 + self.right.deepest()[1] if self.right else 0)
+    return None, 0
+
 new_root = Node(9)
 new_root.build_tree([5,3,7,2,5,2,7,3,7,2,9])
 print("\nInorder Traversal\n")
@@ -110,3 +115,10 @@ root.right.right = Node(14)
 print(root.findCeilingFloor(5 , 4 , 6))
 
 print(f"\nTree depth : {root.tree_depth()}")
+
+root = Node('a')
+root.left = Node('b')
+root.left.left = Node('d')
+root.right = Node('c')
+
+print(f"\nWork in Progress : Deepest node : {root.deepest()}")
