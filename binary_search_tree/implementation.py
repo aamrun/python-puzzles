@@ -77,9 +77,30 @@ class Node:
     return 0
 
   def deepest(self):
-    if self:
-     return self.value, max(1 + self.left.deepest()[1] if self.left else 0, 1 + self.right.deepest()[1] if self.right else 0)
-    return None, 0
+    first_stack,second_stack,depth,node_value = [self],[],0,None
+
+    while first_stack!=[] or second_stack!=[]:
+     if first_stack!=[]:
+      depth += 1
+      node_value = first_stack[0].value
+      while first_stack!=[]:
+       node = first_stack.pop()
+       if node.left:
+        second_stack.append(node.left)
+       if node.right:
+        second_stack.append(node.right)
+
+     if second_stack!=[]:
+      depth += 1
+      node_value = second_stack[0].value
+      while second_stack!=[]:
+       node = second_stack.pop()
+       if node.left:
+        first_stack.append(node.left)
+       if node.right:
+        first_stack.append(node.right)
+
+    return node_value,depth
 
 new_root = Node(9)
 new_root.build_tree([5,3,7,2,5,2,7,3,7,2,9])
@@ -127,7 +148,9 @@ print(f"\nTree depth : {root.tree_depth()}")
 
 root = Node('a')
 root.left = Node('b')
+root.left.right = Node('e')
+root.left.right.left = Node('f')
 root.left.left = Node('d')
 root.right = Node('c')
 
-print(f"\nWork in Progress : Deepest node : {root.deepest()}")
+print(f"\nDeepest node : {root.deepest()}")

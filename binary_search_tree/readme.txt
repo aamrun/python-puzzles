@@ -8,7 +8,7 @@ Postorder traversal
 Invert the tree
 Floor and Ceiling of a tree
 Tree depth
-Deepest node ( Work in Progress )
+Deepest node
 
 
 This class will be expanded and branched off into other implementations such as AVL trees, Red-Black trees, Ternary trees etc.
