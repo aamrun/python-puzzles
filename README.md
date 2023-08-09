@@ -1,7 +1,7 @@
 # python-puzzles
 Repository for Python code for puzzles and problems involving algorithms and data structures.
 
-This repo is structured as following :
+This repo is structured as follows :
 
 A directory is created for every problem.
 
