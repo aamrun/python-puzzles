@@ -102,6 +102,16 @@ class Node:
 
     return node_value,depth
 
+  def validate_bst(self):
+    if self.left is None and self.right is None:
+     return True
+    elif self.left and self.right is None:
+     return self.left.value < self.value and self.left.validate_bst()
+    elif self.right and self.left is None:
+     return self.right.value > self.value and self.right.validate_bst()
+    else:
+     return self.left.value < self.value and self.right.value > self.value and self.right.validate_bst() and self.left.validate_bst()
+
 new_root = Node(9)
 new_root.build_tree([5,3,7,2,5,2,7,3,7,2,9])
 print("\nInorder Traversal\n")
@@ -154,3 +164,11 @@ root.left.left = Node('d')
 root.right = Node('c')
 
 print(f"\nDeepest node : {root.deepest()}")
+
+a = Node(5)
+a.left = Node(3)
+a.right = Node(7)
+a.left.left = Node(1)
+a.left.right = Node(4)
+a.right.left = Node(6)
+print(a.validate_bst())
