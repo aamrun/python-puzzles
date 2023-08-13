@@ -102,6 +102,41 @@ class Node:
 
     return node_value,depth
 
+  def nodes_at_depth(self,target_depth):
+    if target_depth == 0:
+     return self.value if self else None
+
+    first_stack,second_stack,depth,node_value = [self],[],0,None
+
+    while first_stack!=[] or second_stack!=[]:
+     if first_stack!=[]:
+      depth += 1
+      node_value = first_stack[0].value
+      while first_stack!=[]:
+       node = first_stack.pop()
+       if node.left:
+        second_stack.append(node.left)
+       if node.right:
+        second_stack.append(node.right)
+
+      if depth == target_depth and second_stack!=[]:
+       return [node.value for node in second_stack]
+
+     if second_stack!=[]:
+      depth += 1
+      node_value = second_stack[0].value
+      while second_stack!=[]:
+       node = second_stack.pop()
+       if node.left:
+        first_stack.append(node.left)
+       if node.right:
+        first_stack.append(node.right)
+
+     if depth == target_depth and first_stack!=[]:
+      return [node.value for node in first_stack]
+
+    return None
+
   def validate_bst(self):
     if self.left is None and self.right is None:
      return True
@@ -171,4 +206,13 @@ a.right = Node(7)
 a.left.left = Node(1)
 a.left.right = Node(4)
 a.right.left = Node(6)
-print(a.validate_bst())
+print(f"Work in Progess : Validate BST : {a.validate_bst()}")
+
+a = Node(1)
+a.left = Node(2)
+a.right = Node(3)
+a.left.left = Node(4)
+a.left.right = Node(5)
+a.right.right = Node(7)
+print(f"Nodes at depth 2 : {a.nodes_at_depth(2)}")
+# [4, 5, 7]
