@@ -216,3 +216,14 @@ a.left.right = Node(5)
 a.right.right = Node(7)
 print(f"Nodes at depth 2 : {a.nodes_at_depth(2)}")
 # [4, 5, 7]
+
+root = Node(1)
+root.left = Node(2)
+root.right = Node(3)
+root.left.left = Node(4)
+root.left.right = Node(5)
+root.right.left = Node(6)
+root.right.right = Node(7)
+
+print(f"\nPreorder : {root.preorder_traversal()}\nInorder : {root.inorder_traversal()}\nPostorder : {root.postorder_traversal()}")
+
